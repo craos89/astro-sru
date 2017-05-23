@@ -1,14 +1,26 @@
 ﻿import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-channels',
+  selector: '[app-channels]',
   templateUrl: 'channels.component.html'
 })
 export class ChannelsComponent implements OnInit {
-  public channelName = {
-    familyPack: "familyPack",
-    sports: "sports",
-    movies: "movies"
+  // channel name
+  public channel = {
+    familyPack: [
+      { id: "1", name: "family" }
+    ],
+    primePack: [
+      { id: "1", name: "sports" },
+      { id: "2", name: "dynasty" },
+      { id: "3", name: "movies" }
+    ],
+    miniPack: [
+      { id: "1", name: "news" },
+      { id: "2", name: "kids" },
+      { id: "3", name: "learning" },
+      { id: "4", name: "variety" }
+    ]
   };
 
   constructor() { }
@@ -16,13 +28,8 @@ export class ChannelsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public addProp(e, channel) {
-    if (e.target.checked) {
-      console.log(e.target.checked + ': ' + channel);
-    }
-    else{
-      console.log(e.target.checked + ': ' + channel);
-    }
+  public reCalc(e) {
+
   }
 
 }

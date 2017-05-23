@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-selection',
+    selector: '[app-selection]',
     templateUrl: 'selection.component.html'
 })
 export class SelectionComponent implements OnInit {

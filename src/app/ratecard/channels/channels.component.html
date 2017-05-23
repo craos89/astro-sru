@@ -1,12 +1,27 @@
-﻿<div class="col-md-12">
-  <h3>Channels Info</h3>
-  <div class="row">
-    <div class="col-md-12">
+﻿<div class="row">
+  <div class="card">
+    <div class="card-header">
+      Family Pack&nbsp;&nbsp;
+      <label class="switch switch-icon switch-sm switch-text switch-info float-right mb-0">
+            <input class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <span class="switch-label" data-off="&#xf00d;" data-on="&#xf00c;"></span>
+            <span class="switch-handle"></span>
+          </label>
+    </div>
+    <div class="card-block">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      Prime Package&nbsp;&nbsp;
+    </div>
+    <div class="card-block">
       <div class="card">
         <div class="card-header">
-          Astro Family Pack&nbsp;&nbsp;
+          Dynasty&nbsp;&nbsp;
           <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input class="switch-input" type="checkbox" (ngModel)=channelName.familyPack (change)="addProp($event, channelName.familyPack)">
+            <input class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="Off" data-on="On"></span>
             <span class="switch-handle"></span>
         </label>
@@ -14,31 +29,86 @@
         <div class="card-block">
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header">
-          Sports&nbsp;&nbsp;
-          <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input class="switch-input" type="checkbox" (ngModel)=channelName.sports (change)="addProp($event, channelName.sports)">
-            <span class="switch-label" data-off="Off" data-on="On"></span>
-            <span class="switch-handle"></span>
-        </label>
-        </div>
-        <div class="card-block">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
+
       <div class="card">
         <div class="card-header">
           Movies&nbsp;&nbsp;
           <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input class="switch-input" type="checkbox" (ngModel)=channelName.movies (change)="addProp($event, channelName.movies)">
+            <input class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <span class="switch-label" data-off="Off" data-on="On"></span>
+            <span class="switch-handle"></span>
+        </label>
+        </div>
+        <div class="card-block">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          Sports&nbsp;&nbsp;
+          <label class="switch switch-sm switch-text switch-info float-right mb-0">
+            <input (id)=channel.familyPack[0].id class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <span class="switch-label" data-off="Off" data-on="On"></span>
+            <span class="switch-handle"></span>
+        </label>
+        </div>
+        <div class="card-block">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      Mini Pack&nbsp;&nbsp;
+    </div>
+    <div class="card-block">
+      <div class="card">
+        <div class="card-header">
+          News&nbsp;&nbsp;
+          <label class="switch switch-sm switch-text switch-info float-right mb-0">
+            <input class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <span class="switch-label" data-off="Off" data-on="On"></span>
+            <span class="switch-handle"></span>
+        </label>
+        </div>
+        <div class="card-block">
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div class="card-header">
+          Learning&nbsp;&nbsp;
+          <label class="switch switch-sm switch-text switch-info float-right mb-0">
+            <input class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <span class="switch-label" data-off="Off" data-on="On"></span>
+            <span class="switch-handle"></span>
+        </label>
+        </div>
+        <div class="card-block">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          Kids&nbsp;&nbsp;
+          <label class="switch switch-sm switch-text switch-info float-right mb-0">
+            <input class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <span class="switch-label" data-off="Off" data-on="On"></span>
+            <span class="switch-handle"></span>
+        </label>
+        </div>
+        <div class="card-block">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          Variety&nbsp;&nbsp;
+          <label class="switch switch-sm switch-text switch-info float-right mb-0">
+            <input class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="Off" data-on="On"></span>
             <span class="switch-handle"></span>
         </label>
@@ -48,8 +118,3 @@
       </div>
     </div>
   </div>
-  <div class="row"></div>
-  <div class="row"></div>
-  <div class="row"></div>
-  <div class="row"></div>
-</div>
