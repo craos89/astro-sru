@@ -1,21 +1,25 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChannelsComponent } from './channels/channels.component';
+import { PreviewComponent } from './preview/preview.component';
 import { SelectionComponent } from './selection/selection.component';
 
 @Component({
-    templateUrl: 'ratecard.component.html'
+  templateUrl: 'ratecard.component.html'
 })
+
 export class RateCardComponent implements OnInit {
-  @ViewChild(ChannelsComponent) channelsComponent: ChannelsComponent
-  @ViewChild(SelectionComponent) selectionComponent: SelectionComponent
 
-  constructor( ) { }
+  @ViewChild(ChannelsComponent) channelsComponent: ChannelsComponent;
+  @ViewChild(PreviewComponent) previewComponent: PreviewComponent;
 
-  ngOnInit(): void {    
+  constructor(
+  ) { }
+
+  ngOnInit(): void {
   }
 
   ngAfterViewInit() {
-    // After the view is initialized, this.child_component_name will be available
   }
+
 }

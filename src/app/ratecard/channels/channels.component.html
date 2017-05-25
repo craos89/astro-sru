@@ -3,7 +3,7 @@
     <div class="card-header">
       Family Pack&nbsp;&nbsp;
       <label class="switch switch-icon switch-sm switch-text switch-info float-right mb-0">
-            <input class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <input [id]="pack.familyPack[0].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="&#xf00d;" data-on="&#xf00c;"></span>
             <span class="switch-handle"></span>
           </label>
@@ -19,9 +19,22 @@
     <div class="card-block">
       <div class="card">
         <div class="card-header">
+          Sports&nbsp;&nbsp;
+          <label class="switch switch-sm switch-text switch-info float-right mb-0">
+            <input [id]="pack.primePack[0].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <span class="switch-label" data-off="Off" data-on="On"></span>
+            <span class="switch-handle"></span>
+        </label>
+        </div>
+        <div class="card-block">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
           Dynasty&nbsp;&nbsp;
           <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <input [id]="pack.primePack[1].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="Off" data-on="On"></span>
             <span class="switch-handle"></span>
         </label>
@@ -34,20 +47,7 @@
         <div class="card-header">
           Movies&nbsp;&nbsp;
           <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input class="switch-input" type="checkbox" (change)="reCalc($event)">
-            <span class="switch-label" data-off="Off" data-on="On"></span>
-            <span class="switch-handle"></span>
-        </label>
-        </div>
-        <div class="card-block">
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          Sports&nbsp;&nbsp;
-          <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input (id)=channel.familyPack[0].id class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <input [id]="pack.primePack[2].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="Off" data-on="On"></span>
             <span class="switch-handle"></span>
         </label>
@@ -68,21 +68,7 @@
         <div class="card-header">
           News&nbsp;&nbsp;
           <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input class="switch-input" type="checkbox" (change)="reCalc($event)">
-            <span class="switch-label" data-off="Off" data-on="On"></span>
-            <span class="switch-handle"></span>
-        </label>
-        </div>
-        <div class="card-block">
-        </div>
-      </div>
-
-
-      <div class="card">
-        <div class="card-header">
-          Learning&nbsp;&nbsp;
-          <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <input [id]="pack.miniPack[0].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="Off" data-on="On"></span>
             <span class="switch-handle"></span>
         </label>
@@ -95,7 +81,20 @@
         <div class="card-header">
           Kids&nbsp;&nbsp;
           <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <input [id]="pack.miniPack[1].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <span class="switch-label" data-off="Off" data-on="On"></span>
+            <span class="switch-handle"></span>
+        </label>
+        </div>
+        <div class="card-block">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          Learning&nbsp;&nbsp;
+          <label class="switch switch-sm switch-text switch-info float-right mb-0">
+            <input [id]="pack.miniPack[2].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="Off" data-on="On"></span>
             <span class="switch-handle"></span>
         </label>
@@ -108,7 +107,7 @@
         <div class="card-header">
           Variety&nbsp;&nbsp;
           <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <input [id]="pack.miniPack[3].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="Off" data-on="On"></span>
             <span class="switch-handle"></span>
         </label>
