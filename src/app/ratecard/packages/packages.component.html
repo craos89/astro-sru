@@ -1,9 +1,63 @@
-﻿<div class="row">
+﻿<div id="packages" class="card" *ngFor="let mainpack of mainpacks">
+  <div class="card-header">
+    {{mainpack.name}}&nbsp;&nbsp;
+  </div>
+  <div class="">
+    <div *ngFor="let pack of mainpack.pack">
+
+      <div>
+        <input id="{{pack.id}}" class="checkbox-custom" name="{{pack.id}}" type="checkbox" (change)="reChecked($event)">
+        <label for="{{pack.id}}" class="checkbox-custom-label">{{pack.name}}</label>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div (click)="onContainerClicked($event)" class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}" [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Choose Mini Packs</h5>
+      </div>
+      <div class="modal-body">
+
+        <ng-container *ngFor="let mainpack of mainpacks">
+          <div *ngIf="mainpack.id == 'mp'">
+            <span id="modalHeader"></span>
+            <div *ngFor="let pack of mainpack.pack">              
+              <div>
+                <input id="{{modalDivPrefix}}{{pack.id}}" class="checkbox-custom" name="{{pack.id}}" type="checkbox" (change)="reCheckedModal($event)">
+                <label for="{{modalDivPrefix}}{{pack.id}}" class="checkbox-custom-label">{{pack.name}}</label>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <div class="modal-footer">
+          <button (click)="hide()" class="btn btn-primary">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--<div *ngFor="let pack of packs" style="display:none;">
+
+  <h5>{{pack.name}}</h5>
+
+  <div *ngFor="let channel of pack.channels">
+    <span>{{channel.name}}</span>
+  </div>
+
+</div>
+
+<div id="channelsComponent" class="row" style="display:none;">
   <div class="card">
     <div class="card-header">
       Family Pack&nbsp;&nbsp;
       <label class="switch switch-icon switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack.familyPack[0].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <input [id]="pack['as'].packContent[0].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="&#xf00d;" data-on="&#xf00c;"></span>
             <span class="switch-handle"></span>
           </label>
@@ -21,7 +75,7 @@
         <div class="card-header">
           Sports&nbsp;&nbsp;
           <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack.primePack[0].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <input [id]="pack['pp'].packContent[0].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="Off" data-on="On"></span>
             <span class="switch-handle"></span>
         </label>
@@ -34,7 +88,7 @@
         <div class="card-header">
           Dynasty&nbsp;&nbsp;
           <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack.primePack[1].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <input [id]="pack['pp'].packContent[1].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="Off" data-on="On"></span>
             <span class="switch-handle"></span>
         </label>
@@ -47,7 +101,7 @@
         <div class="card-header">
           Movies&nbsp;&nbsp;
           <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack.primePack[2].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <input [id]="pack['pp'].packContent[2].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="Off" data-on="On"></span>
             <span class="switch-handle"></span>
         </label>
@@ -68,7 +122,7 @@
         <div class="card-header">
           News&nbsp;&nbsp;
           <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack.miniPack[0].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <input [id]="pack['mp'].packContent[0].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="Off" data-on="On"></span>
             <span class="switch-handle"></span>
         </label>
@@ -81,7 +135,7 @@
         <div class="card-header">
           Kids&nbsp;&nbsp;
           <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack.miniPack[1].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <input [id]="pack['mp'].packContent[1].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="Off" data-on="On"></span>
             <span class="switch-handle"></span>
         </label>
@@ -94,7 +148,7 @@
         <div class="card-header">
           Learning&nbsp;&nbsp;
           <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack.miniPack[2].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <input [id]="pack['mp'].packContent[2].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="Off" data-on="On"></span>
             <span class="switch-handle"></span>
         </label>
@@ -107,7 +161,7 @@
         <div class="card-header">
           Variety&nbsp;&nbsp;
           <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack.miniPack[3].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
+            <input [id]="pack['mp'].packContent[3].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
             <span class="switch-label" data-off="Off" data-on="On"></span>
             <span class="switch-handle"></span>
         </label>
@@ -116,4 +170,4 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->

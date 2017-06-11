@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ChannelsComponent } from './channels/channels.component';
+import { PackagesComponent } from './packages/packages.component';
 import { PreviewComponent } from './preview/preview.component';
 import { SelectionComponent } from './selection/selection.component';
 
@@ -10,8 +10,9 @@ import { SelectionComponent } from './selection/selection.component';
 
 export class RateCardComponent implements OnInit {
 
-  @ViewChild(ChannelsComponent) channelsComponent: ChannelsComponent;
+  @ViewChild(PackagesComponent) channelsComponent: PackagesComponent;
   @ViewChild(PreviewComponent) previewComponent: PreviewComponent;
+  @ViewChild(SelectionComponent) selectionComponent: SelectionComponent;
 
   constructor(
   ) { }

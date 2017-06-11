@@ -2,10 +2,10 @@
 
 @Component({
   selector: '[app-preview]',
-  templateUrl: 'preview.component.html'
+  templateUrl: 'preview.component.html',
+  styleUrls: ['../../../assets/css/checkbox.scss']
 })
 
-@Injectable()
 export class PreviewComponent implements OnInit {
 
   constructor() { }
@@ -13,11 +13,29 @@ export class PreviewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public addChannel(channels: Array<any>) {
-    let el = document.getElementById('channelList');
+  private previewDivPrefix = 'channelList.';
+
+  public addChannel(packId: string) {
+    let el = document.getElementById(this.previewDivPrefix + packId);
+    el.className = "card selected";
+
+    /*let el = document.getElementById('channelList');
+    let channelListInnerHTML='';
+    channelListInnerHTML += "<div id='channelList." + packId + "'>";
+    
     for (let entry of channels) {
-      el.innerHTML += entry + "<br>";
+      channelListInnerHTML += entry + "<br>";
     }
+
+    el.innerHTML += channelListInnerHTML + "</div>";*/
+  }
+
+  public removeChannel(packId: string) {
+    let el = document.getElementById(this.previewDivPrefix + packId);
+    el.className = "card";
+    /*console.log('removeChannel: ' + 'channelList.' + packId);
+    let elem = document.getElementById('channelList.' + packId);
+    elem.parentNode.removeChild(elem);*/
   }
 
 }

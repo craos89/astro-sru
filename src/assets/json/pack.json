@@ -1,0 +1,68 @@
+{
+    "as": {
+        "packName": "Astro Family",
+        "packContent": [
+            {
+                "id": "as.0",
+                "name": "Family",
+                "price": 10
+            }
+        ]
+    },
+    "pp": {
+        "packName": "Prime Packages",
+        "packContent": [
+            {
+                "id": "pp.0",
+                "name": "Sport",
+                "channels": [
+                    "channel_1",
+                    "channel_2",
+                    "channel_3"
+                ],
+                "price": 10
+            },
+            {
+                "id": "pp.1",
+                "name": "Dynasty",
+                "channels": [
+                    "channel_4",
+                    "channel_5",
+                    "channel_6"
+                ],
+                "price": 10
+            },
+            {
+                "id": "pp.2",
+                "name": "Movies",
+                "channels": [
+                    "channel_7",
+                    "channel_8",
+                    "channel_9"
+                ],
+                "price": 10
+            }
+        ]
+    },
+    "mp": {
+        "packName": "Mini Pack",
+        "packContent": [
+            {
+                "id": "mp.0",
+                "name": "News"
+            },
+            {
+                "id": "mp.1",
+                "name": "Kids"
+            },
+            {
+                "id": "mp.2",
+                "name": "Learning"
+            },
+            {
+                "id": "mp.3",
+                "name": "Variety"
+            }
+        ]
+    }
+};
