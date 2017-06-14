@@ -3,10 +3,11 @@
 @Component({
   selector: '[app-preview]',
   templateUrl: 'preview.component.html',
-  styleUrls: ['../../../assets/css/checkbox.scss']
+  styleUrls: ['../../../assets/css/checkbox.scss', '../../../assets/css/mainpack.scss']
 })
 
 export class PreviewComponent implements OnInit {
+  private shown: string = 'SHOW';
 
   constructor() { }
 

@@ -1,0 +1,37 @@
+.card{
+    /*flex-direction: row*/
+}
+
+.modal {
+  background: rgba(0,0,0,0.6);
+}
+
+.modal-dialog {
+  top: 25%;
+}
+
+.hide{
+  display: none;
+}
+
+.astro-font{
+  color: #Ec008C;
+  font-weight:bold;
+}
+
+ul.horizontal-slide {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+ul.horizontal-slide li[class*="col"] {
+    display: inline-block;
+    float: none;
+}
+
+ul.horizontal-slide li[class*="col"]:first-child {
+    margin-left: 0;
+}

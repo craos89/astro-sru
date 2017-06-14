@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RateCardComponent } from './ratecard.component';
 import { RateCardRoutingModule } from './ratecard.routing.module';
 import { CommonModule  } from '@angular/common';
-import { PackagesComponent } from './packages/packages.component';
+import { MainpackComponent } from './mainpack/mainpack.component';
 import { PreviewComponent } from './preview/preview.component';
 import { SelectionComponent } from './selection/selection.component';
 
@@ -11,9 +11,9 @@ import { SelectionComponent } from './selection/selection.component';
     RateCardRoutingModule,
     CommonModule
   ],
-  declarations: [RateCardComponent, PackagesComponent, PreviewComponent, SelectionComponent],
+  declarations: [RateCardComponent, MainpackComponent, PreviewComponent, SelectionComponent],
   providers: [
-    PackagesComponent,
+    MainpackComponent,
     PreviewComponent,
     SelectionComponent
   ],

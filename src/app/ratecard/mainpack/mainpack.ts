@@ -4,6 +4,8 @@ export class Package {
     public pack: string,
     public id: string,
     public name: string,
-    public functionName: string
+    public functionName: string,
+    public price: number,
+    public always: boolean
   ) { }
 }
