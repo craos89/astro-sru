@@ -3,91 +3,98 @@
     <div class="card">
       <div class="card-header">
         Channels:&nbsp;&nbsp;
-        <button (click)="shown = 'SHOW'" type="button" class="btn btn-secondary float-right">SHOW ALL</button>
-        <button (click)="shown = 'HIDE'" type="button" class="btn btn-secondary float-right">HIDE ALL</button>
+        <button id="hideAll" (click)="hideUnselected()" type="button" class="btn btn-secondary float-right">HIDE</button>
+        <button id="showAll" (click)="showAll()" type="button" class="btn btn-secondary float-right button-active">SHOW</button>        
       </div>
       <div id="{{previewDivPrefix}}" class="card-block row">
 
-        <div id="{{previewDivPrefix}}as.0" class="card">
+        <div id="{{previewDivPrefix}}as.0" class="card unselected">
           <div class="card-header">
             Family Pack&nbsp;&nbsp;
           </div>
-          <div class="card-block" *ngIf="shown === 'SHOW'">
+          <div class="card-block">
             <span>101 TV1</span><br>
             <span>102 TV2</span><br>
+            <span>103 TV3</span><br>
+            <span>104 Astro Ria</span><br>
+            <span>105 Astro Prima</span><br>
+            <span>106 Astro Oasis</span><br>
             <span>107 NTV 7</span><br>
           </div>
         </div>
 
-        <div id="{{previewDivPrefix}}pp.0" class="card" [ngClass]="(shown === 'SHOW')?'card':'hide'">
+        <div id="{{previewDivPrefix}}pp.0" class="card unselected">
           <div class="card-header">
             Sport&nbsp;&nbsp;
           </div>
-          <div class="card-block" *ngIf="shown === 'SHOW'">
-            <span>104 Astro Ria</span><br>
-            <span>105 Astro Prima</span><br>
-            <span>106 Astro Oasis</span><br>
-            <span>107 NTV 7</span><br>
+          <div class="card-block">
+            <span>808 eGG Network</span><br>
+            <span>810 Astro SuperSport</span><br>
+            <span>811 Astro SuperSport 2</span><br>
+            <span>812 FOX Sports</span><br>
           </div>
         </div>
 
-        <div id="{{previewDivPrefix}}pp.1" class="card">
+        <div id="{{previewDivPrefix}}pp.1" class="card unselected">
           <div class="card-header">
             Dynasty&nbsp;&nbsp;
           </div>
-          <div class="card-block" *ngIf="shown === 'SHOW'">
-            <span>106 Astro Oasis</span><br>
-            <span>107 NTV 7</span><br>
+          <div class="card-block">
+            <span>311 Wah Lai Toi </span><br>
+            <span>312 Phoenix Chinese Channel</span><br>
+            <span>313 TVB Entertainment News</span><br>
+            <span>314 TVB Xing He</span><br>
           </div>
         </div>
 
-        <div id="{{previewDivPrefix}}pp.2" class="card">
+        <div id="{{previewDivPrefix}}pp.2" class="card unselected">
           <div class="card-header">
             Movies&nbsp;&nbsp;
           </div>
-          <div class="card-block" *ngIf="shown === 'SHOW'">
-            <span>104 Astro Ria</span><br>
-            <span>105 Astro Prima</span><br>
+          <div class="card-block">
+            <span>411 HBO</span><br>
+            <span>412 Cinemax</span><br>
+            <span>413 Fox Movies Premium</span><br>
           </div>
         </div>
 
-        <div id="{{previewDivPrefix}}mp.0" class="card">
+        <div id="{{previewDivPrefix}}mp.0" class="card unselected">
           <div class="card-header">
             News&nbsp;&nbsp;
           </div>
-          <div class="card-block" *ngIf="shown === 'SHOW'">
-            <span>104 Astro Ria</span><br>
-            <span>105 Astro Prima</span><br>
+          <div class="card-block">
+            <span>511 CNN</span><br>
+            <span>512 BBC World</span><br>
           </div>
         </div>
 
-        <div id="{{previewDivPrefix}}mp.1" class="card">
+        <div id="{{previewDivPrefix}}mp.1" class="card unselected">
           <div class="card-header">
             Kids&nbsp;&nbsp;
           </div>
-          <div class="card-block" *ngIf="shown === 'SHOW'">
-            <span>104 Astro Ria</span><br>
-            <span>105 Astro Prima</span><br>
+          <div class="card-block">
+            <span>612 Nickelodeon</span><br>
+            <span>613 Disney Junior</span><br>
           </div>
         </div>
 
-        <div id="{{previewDivPrefix}}mp.2" class="card">
+        <div id="{{previewDivPrefix}}mp.2" class="card unselected">
           <div class="card-header">
             Learning&nbsp;&nbsp;
           </div>
-          <div class="card-block" *ngIf="shown === 'SHOW'">
-            <span>104 Astro Ria</span><br>
-            <span>105 Astro Prima</span><br>
+          <div class="card-block">
+            <span>551 Discovery Channel</span><br>
+            <span>553 Nat Geo</span><br>
           </div>
         </div>
 
-        <div id="{{previewDivPrefix}}mp.3" class="card">
+        <div id="{{previewDivPrefix}}mp.3" class="card unselected">
           <div class="card-header">
             Variety&nbsp;&nbsp;
           </div>
-          <div class="card-block" *ngIf="shown === 'SHOW'">
-            <span>104 Astro Ria</span><br>
-            <span>105 Astro Prima</span><br>
+          <div class="card-block">
+            <span>711 Star World</span><br>
+            <span>712 E! Entertainment</span><br>
           </div>
         </div>
 

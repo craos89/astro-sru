@@ -7,7 +7,6 @@
 })
 
 export class PreviewComponent implements OnInit {
-  private shown: string = 'SHOW';
 
   constructor() { }
 
@@ -20,23 +19,41 @@ export class PreviewComponent implements OnInit {
     let el = document.getElementById(this.previewDivPrefix + packId);
     el.className = "card selected";
 
-    /*let el = document.getElementById('channelList');
-    let channelListInnerHTML='';
-    channelListInnerHTML += "<div id='channelList." + packId + "'>";
-    
-    for (let entry of channels) {
-      channelListInnerHTML += entry + "<br>";
-    }
-
-    el.innerHTML += channelListInnerHTML + "</div>";*/
+    el.setAttribute("style", "display:block");
   }
 
   public removeChannel(packId: string) {
     let el = document.getElementById(this.previewDivPrefix + packId);
-    el.className = "card";
-    /*console.log('removeChannel: ' + 'channelList.' + packId);
-    let elem = document.getElementById('channelList.' + packId);
-    elem.parentNode.removeChild(elem);*/
+    el.className = "card unselected";
+
+    let button = document.getElementById("hideAll");
+    if (button.className === "btn btn-secondary float-right button-active") {
+      el.setAttribute("style", "display:none");
+    }
+  }
+
+  showAll() {
+    let button = document.getElementById("showAll");
+    button.className = "btn btn-secondary float-right button-active";
+    button = document.getElementById("hideAll");
+    button.className = "btn btn-secondary float-right";
+
+    let elems = document.getElementsByClassName('card unselected');
+    for (var i = 0; i < elems.length; i++) {
+      elems[i].setAttribute("style", "display:block");
+    }
+  }
+
+  hideUnselected() {
+    let button = document.getElementById("showAll");
+    button.className = "btn btn-secondary float-right";
+    button = document.getElementById("hideAll");
+    button.className = "btn btn-secondary float-right button-active";
+
+    let elems = document.getElementsByClassName('card unselected');
+    for (var i = 0; i < elems.length; i++) {
+      elems[i].setAttribute("style", "display:none");
+    }
   }
 
 }

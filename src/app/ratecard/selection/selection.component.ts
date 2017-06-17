@@ -24,7 +24,7 @@ export class SelectionComponent implements OnInit {
     this.TotalPrice = this.round(this.nextNearest(price + gst));
     document.getElementById('totalRounding').innerHTML = "RM" + this.TotalPrice.toFixed(2).toString();
 
-    if (this.TotalPrice > 150) {
+    if (this.TotalPrice >= 130) {
       document.getElementById('suggestion').style.display = "block";
     }
     else{
