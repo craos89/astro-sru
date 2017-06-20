@@ -1,7 +1,28 @@
-﻿<div class="animated fadeIn">
+﻿<div class="animated fadeIn" style="padding-top:1em;">
   <div class="row">
-    <div app-mainpack class="col-sm-12 col-md-4"></div>
-    <div app-preview class="col-sm-12 col-md-4"></div>
-    <div app-selection class="col-sm-12 col-md-4"></div>
+    <div app-mainpack class="col-sm-12 col-md-6"></div>
+    <div app-preview class="col-sm-12 col-md-6"></div>
+    <div app-selection class="" style="display:none;"></div>
   </div>
+
+  <body id="popupSuggestion" class="" [ngStyle]="{ 'display': sharedService.priceData.showSuggestion ? 'block' : 'none', 'opacity': sharedService.priceData.showSuggestion ? 1 : 0}">
+    <div class="window col-xs-10 col-md-8" style="">
+      <nav class="window-controls">
+        <button class="maximize" (click)="maximize()">Suggestion</button>
+        <!--<div class="close"></div>-->
+        <button class="minimize" (click)="minimize()"></button>
+      </nav>
+
+      <aside class="window-sidebar">
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+      </aside>
+
+      <section class="window-content"></section>
+    </div>
+
+    <!--<div class="bg"></div>-->
+  </body>
 </div>

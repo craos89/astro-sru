@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { HttpModule }       from '@angular/http';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -20,6 +20,8 @@ import { AppRoutingModule } from './app.routing';
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { CustomLayoutComponent } from './layouts/custom-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
+
+import { SharedService } from './ratecard/shared.service';
 
 @NgModule({
   imports: [
@@ -40,10 +42,12 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
   ],
-  providers: [{
+  providers: [
+    SharedService, 
+  {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

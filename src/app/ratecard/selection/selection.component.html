@@ -1,4 +1,4 @@
-﻿<div class="row">
+﻿<div class="row" style="display:none;">
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-  <div id="suggestion" class="col-md-12" style="display:none;">
+  <!--<div id="suggestion" class="col-md-12" [ngStyle]="{ 'display': this.sharedService.priceData.showSuggestion ? 'block' : 'none'}">
     <div class="card">
       <div class="card-header">
         Suggestion&nbsp;&nbsp;
@@ -40,6 +40,27 @@
         </ul>
       </div>
     </div>
-  </div>
+  </div>-->
+
+  <!-- Modal -->
+  <!--<div id="suggestion" (click)="onContainerClicked($event)" class="modal fade" tabindex="-1" [ngStyle]="{ 'display': this.sharedService.priceData.showSuggestion ? 'block' : 'none', 'opacity': this.sharedService.priceData.showSuggestion ? 1 : 0}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Suggestion</h5>
+        </div>
+        <div class="modal-body">
+
+          <ul class="horizontal-slide">
+            <li class="col-md-2"><img class="thumbnail" src="assets/img/SuperPack.JPG" /></li>
+          </ul>
+
+          <div class="modal-footer">
+            <button (click)="onContainerClicked($event)" class="btn btn-primary">Continue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
 
 </div>

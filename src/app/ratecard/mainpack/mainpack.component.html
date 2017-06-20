@@ -6,7 +6,8 @@
     <div *ngFor="let pack of mainpack.pack">
 
       <div>
-        <input id="{{pack.id}}" class="checkbox-custom" name="{{pack.id}}" type="checkbox" (change)="reChecked($event)" [checked]="pack.always" [disabled]="pack.always">
+        <input id="{{pack.id}}" class="checkbox-custom" name="{{pack.id}}" type="checkbox" (change)="reChecked($event)" [checked]="pack.always"
+          [disabled]="pack.always">
         <label for="{{pack.id}}" class="checkbox-custom-label">{{pack.name}}</label>
         <label for="{{pack.id}}" class="checkbox-custom-label astro-font float-right" *ngIf='pack.price != 0'>RM {{pack.price}}</label>
       </div>
@@ -27,7 +28,7 @@
         <ng-container *ngFor="let mainpack of mainpacks">
           <div *ngIf="mainpack.id == 'mp'">
             <span id="modalHeader"></span>
-            <div *ngFor="let pack of mainpack.pack">              
+            <div *ngFor="let pack of mainpack.pack">
               <div>
                 <input id="{{modalDivPrefix}}{{pack.id}}" class="checkbox-custom" name="{{pack.id}}" type="checkbox" (change)="reCheckedModal($event)">
                 <label for="{{modalDivPrefix}}{{pack.id}}" class="checkbox-custom-label">{{pack.name}}</label>
@@ -42,133 +43,4 @@
       </div>
     </div>
   </div>
-
-  <!--<div *ngFor="let pack of packs" style="display:none;">
-
-  <h5>{{pack.name}}</h5>
-
-  <div *ngFor="let channel of pack.channels">
-    <span>{{channel.name}}</span>
-  </div>
-
 </div>
-
-<div id="channelsComponent" class="row" style="display:none;">
-  <div class="card">
-    <div class="card-header">
-      Family Pack&nbsp;&nbsp;
-      <label class="switch switch-icon switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack['as'].packContent[0].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
-            <span class="switch-label" data-off="&#xf00d;" data-on="&#xf00c;"></span>
-            <span class="switch-handle"></span>
-          </label>
-    </div>
-    <div class="card-block">
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header">
-      Prime Package&nbsp;&nbsp;
-    </div>
-    <div class="card-block">
-      <div class="card">
-        <div class="card-header">
-          Sports&nbsp;&nbsp;
-          <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack['pp'].packContent[0].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
-            <span class="switch-label" data-off="Off" data-on="On"></span>
-            <span class="switch-handle"></span>
-        </label>
-        </div>
-        <div class="card-block">
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          Dynasty&nbsp;&nbsp;
-          <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack['pp'].packContent[1].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
-            <span class="switch-label" data-off="Off" data-on="On"></span>
-            <span class="switch-handle"></span>
-        </label>
-        </div>
-        <div class="card-block">
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          Movies&nbsp;&nbsp;
-          <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack['pp'].packContent[2].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
-            <span class="switch-label" data-off="Off" data-on="On"></span>
-            <span class="switch-handle"></span>
-        </label>
-        </div>
-        <div class="card-block">
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header">
-      Mini Pack&nbsp;&nbsp;
-    </div>
-    <div class="card-block">
-      <div class="card">
-        <div class="card-header">
-          News&nbsp;&nbsp;
-          <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack['mp'].packContent[0].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
-            <span class="switch-label" data-off="Off" data-on="On"></span>
-            <span class="switch-handle"></span>
-        </label>
-        </div>
-        <div class="card-block">
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          Kids&nbsp;&nbsp;
-          <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack['mp'].packContent[1].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
-            <span class="switch-label" data-off="Off" data-on="On"></span>
-            <span class="switch-handle"></span>
-        </label>
-        </div>
-        <div class="card-block">
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          Learning&nbsp;&nbsp;
-          <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack['mp'].packContent[2].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
-            <span class="switch-label" data-off="Off" data-on="On"></span>
-            <span class="switch-handle"></span>
-        </label>
-        </div>
-        <div class="card-block">
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          Variety&nbsp;&nbsp;
-          <label class="switch switch-sm switch-text switch-info float-right mb-0">
-            <input [id]="pack['mp'].packContent[3].id" class="switch-input" type="checkbox" (change)="reCalc($event)">
-            <span class="switch-label" data-off="Off" data-on="On"></span>
-            <span class="switch-handle"></span>
-        </label>
-        </div>
-        <div class="card-block">
-        </div>
-      </div>
-    </div>
-  </div>-->

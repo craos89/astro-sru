@@ -1,34 +1,49 @@
 <header class="app-header navbar">
-  <!--<a class="navbar-brand" href="#"></a>-->
-  <ul class="nav navbar-nav d-md-down-none">
+  <a class="navbar-brand" href="#"></a>
+  <!--<ul class="nav navbar-nav d-md-down-none">
     <li class="nav-item px-3">
       <a class="nav-link" href="#">Dashboard</a>
     </li>
-  </ul>
-  <!--<ul class="nav navbar-nav ml-auto">
   </ul>-->
+  <ul class="nav navbar-nav ml-auto">
+    <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
+      <a href class="nav-link" dropdownToggle (click)="false" style="height:50px;">
+        <i class="fa fa-shopping-cart img-avatar" style="height:100%; margin-top: .5rem; font-size: 2rem; color: #ec008c"></i>
+        <!--<img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com" style="height:50px;">-->
+        <span class="d-md-down-none" style="padding-right:1em; font-size: 1.00rem; color: #ec008c">View Order Details</span>
+        <!--<span class="d-md-down-none" style="height:100%; display:inline-block; vertical-align:middle; margin-top: 15px; padding-right:1em;">View Order Details</span>-->
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown" style="overflow:auto; height: calc(100vh - 55px); max-height:500px;">
+
+        <div class="dropdown-header text-center"><strong>Shopping Cart</strong></div>
+
+        <a class="dropdown-item" href="#">Price: {{sharedService.shoppingCart.price}}</a>
+        <a class="dropdown-item" href="#">GST: {{sharedService.shoppingCart.gst}}</a>
+        <a class="dropdown-item" href="#">Total: {{sharedService.shoppingCart.totalPrice}}</a>
+        <a class="dropdown-item" href="#">Total (after rounding): {{sharedService.shoppingCart.totalPriceAfterRounding}}</a>
+        <a class="dropdown-item" href="#">
+          Summary: <br>
+          <div *ngFor="let pack of sharedService.shoppingCart.cartSummary">
+              {{pack}}
+          </div>
+        </a>
+      </div>
+    </li>
+    <!--<li class="nav-item d-md-down-none">
+      <a class="nav-link navbar-toggler" href="#" appAsideMenuToggler>&#9776;</a>
+    </li>-->
+  </ul>
 </header>
 
 <div class="app-body">
   <!-- Main content -->
   <main class="main">
 
-    <!-- Breadcrumb -->
-    <ol class="breadcrumb">
-      <app-breadcrumbs></app-breadcrumbs>
-      <!-- Breadcrumb Menu-->
-      <li class="breadcrumb-menu d-md-down-none">
-        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-          <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
-        </div>
-      </li>
-    </ol>
-
     <div class="container-fluid">
       <router-outlet></router-outlet>
     </div>
     <!-- /.conainer-fluid -->
-  </main>  
+  </main>
 </div>
 
 <footer class="app-footer">

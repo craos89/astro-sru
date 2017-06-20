@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../ratecard/shared.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CustomLayoutComponent implements OnInit {
 
   public disabled = false;
-  public status: {isopen: boolean} = {isopen: false};
+  public status: { isopen: boolean } = { isopen: false };
 
   public toggled(open: boolean): void {
     console.log('Dropdown is now: ', open);
@@ -19,5 +20,9 @@ export class CustomLayoutComponent implements OnInit {
     this.status.isopen = !this.status.isopen;
   }
 
-  ngOnInit(): void {}
+  constructor(
+    private sharedService: SharedService
+  ) { }
+
+  ngOnInit(): void { }
 }
