@@ -15,6 +15,38 @@
 // 	height: 100vh;
 // }
 
+@media (max-width:767px){
+	// .hidden-xs{
+	// 	margin-left: 100% !important
+	// 	// display:none!important
+	// }
+	.visible-sm
+	{ 
+		display: block !important; 
+	}
+
+	.box {
+		overflow-y: auto !important; 
+		min-width: 100%;
+		width: 100%;
+	}
+
+	.box.rtl { 
+		margin-left: 0% !important;
+		transition: all 150ms ease;
+		height:auto;
+	}
+	.box.rtl.active { margin-left: 100% !important; height:0; }
+
+	.box.ltr { 
+		margin-left: 100% !important;
+		transition: all 150ms ease;
+		height:0;
+	}
+	.box.ltr.active { margin-left: 0% !important;height:auto; }
+	
+}
+
 .window{
     webkit-backface-visibility: hidden;
 	position: fixed;

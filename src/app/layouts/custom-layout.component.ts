@@ -3,7 +3,8 @@ import { SharedService } from '../ratecard/shared.service';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './custom-layout.component.html'
+  templateUrl: './custom-layout.component.html',
+  styleUrls: ['../../assets/css/custom-layout.scss']
 })
 export class CustomLayoutComponent implements OnInit {
 

@@ -9,7 +9,7 @@
         <input id="{{pack.id}}" class="checkbox-custom" name="{{pack.id}}" type="checkbox" (change)="reChecked($event)" [checked]="pack.always"
           [disabled]="pack.always">
         <label for="{{pack.id}}" class="checkbox-custom-label">{{pack.name}}</label>
-        <label for="{{pack.id}}" class="checkbox-custom-label astro-font float-right" *ngIf='pack.price != 0'>RM {{pack.price}}</label>
+        <label for="{{pack.id}}" class="checkbox-custom-label astro-font float-right" *ngIf='pack.price != 0'>RM {{pack.price}} / month</label>
       </div>
 
     </div>

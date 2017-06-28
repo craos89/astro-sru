@@ -1,7 +1,19 @@
 ﻿<div class="animated fadeIn" style="padding-top:1em;">
   <div class="row">
-    <div app-mainpack class="col-sm-12 col-md-6"></div>
-    <div app-preview class="col-sm-12 col-md-6"></div>
+
+    <div class="visible-sm" style="display:none;">
+      <div class="toogleDiv">
+        <button id="toogleBtn" class="btn btn-primary" (click)="toogleSlide();" style="margin-bottom:1em; background-color:#ec008c; margin-left:-1em;">
+          <span id="toogleBtnHighlight" style="font-weight:bold;">View</span> 
+          <span id="toogleBtnText">List of Channel</span>
+        </button>
+        <!--<p class="box good">I move nicely!</p>-->
+      </div>
+
+    </div>
+
+    <div id="mainpackSelector" app-mainpack class="col-sm-12 col-md-6 box rtl"></div>
+    <div id="previewSelector" app-preview class="col-sm-12 col-md-6 box ltr"></div>
     <div app-selection class="" style="display:none;"></div>
   </div>
 

@@ -4,16 +4,17 @@
     <li class="nav-item px-3">
       <a class="nav-link" href="#">Dashboard</a>
     </li>
-  </ul>-->
-  <ul class="nav navbar-nav ml-auto">
+  </ul>-->  
+  <ul class="nav navbar-nav ml-auto shopping-cart">    
     <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
       <a href class="nav-link" dropdownToggle (click)="false" style="height:50px;">
+        <span style="font-size: 1.00rem; color: #ec008c">{{sharedService.shoppingCart.totalPriceAfterRounding}} / month</span>
         <i class="fa fa-shopping-cart img-avatar" style="height:100%; margin-top: .5rem; font-size: 2rem; color: #ec008c"></i>
         <!--<img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com" style="height:50px;">-->
-        <span class="d-md-down-none" style="padding-right:1em; font-size: 1.00rem; color: #ec008c">View Order Details</span>
+        <span class="d-md-down-none words">View Order Details</span>
         <!--<span class="d-md-down-none" style="height:100%; display:inline-block; vertical-align:middle; margin-top: 15px; padding-right:1em;">View Order Details</span>-->
       </a>
-      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown" style="overflow:auto; height: calc(100vh - 55px); max-height:500px;">
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown" style="overflow:auto; height: calc(100vh - 56px); max-height:700px;">
 
         <div class="dropdown-header text-center"><strong>Shopping Cart</strong></div>
 

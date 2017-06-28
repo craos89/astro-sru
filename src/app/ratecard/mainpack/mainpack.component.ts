@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit, Injectable, EventEmitter, Input, Output } from '@angular/core';
-import { SharedService } from '../shared.service';
+import { SharedService, SharedData } from '../shared.service';
 import { PreviewComponent } from '../preview/preview.component';
 import { SelectionComponent } from '../selection/selection.component';
 import { Package } from './mainpack';
@@ -13,6 +13,7 @@ import { Package } from './mainpack';
 export class MainpackComponent implements OnInit {
   constructor(
     private sharedService: SharedService,
+    private sharedData: SharedData,
     private previewComponent: PreviewComponent,
     private selectionComponent: SelectionComponent
   ) { }
@@ -41,7 +42,8 @@ export class MainpackComponent implements OnInit {
 
   private modalDivPrefix = 'modal.';
 
-  public mainpacks = [
+  public mainpacks = this.sharedData.mainpacks;
+  /*public mainpacks = [
     {
       id: 'as', name: "Astro Family", pack: [
         new Package(true, 'Astro Family', 'as.0', 'Family', '', 39.95, true)]
@@ -59,7 +61,7 @@ export class MainpackComponent implements OnInit {
         new Package(false, 'Mini Pack', 'mp.2', 'Learning', 'mini_pack', 0, false),
         new Package(false, 'Mini Pack', 'mp.3', 'Variety', 'mini_pack', 0, false)]
     }
-  ]
+  ]*/
 
   ngOnInit(): void {
     this.reCalc('as.0', 'add');
@@ -92,6 +94,7 @@ export class MainpackComponent implements OnInit {
                 }
                 this.previewComponent.addChannel(checkboxId);
                 this.sharedService.shoppingCart.cartSummary.push(pack.pack + ' - ' + pack.name);
+                this.sharedService.shoppingCart.cartSummary.sort();
               }
               else {
                 (<HTMLInputElement>document.getElementById(checkboxId)).checked = true;
@@ -100,6 +103,7 @@ export class MainpackComponent implements OnInit {
                 }
                 this.previewComponent.addChannel(checkboxId);
                 this.sharedService.shoppingCart.cartSummary.push(pack.pack + ' - ' + pack.name);
+                this.sharedService.shoppingCart.cartSummary.sort();
               }
             }
           }
@@ -121,7 +125,8 @@ export class MainpackComponent implements OnInit {
                   (<HTMLInputElement>document.getElementById(this.modalDivPrefix + checkboxId)).checked = false;
                 }
                 this.previewComponent.removeChannel(checkboxId);
-                this.removeItem(this.sharedService.shoppingCart.cartSummary, pack.pack + ' - ' + pack.name)
+                this.removeItem(this.sharedService.shoppingCart.cartSummary, pack.pack + ' - ' + pack.name);
+                this.sharedService.shoppingCart.cartSummary.sort();
               }
               else {
                 (<HTMLInputElement>document.getElementById(checkboxId)).checked = false;
@@ -129,7 +134,8 @@ export class MainpackComponent implements OnInit {
                   (<HTMLInputElement>document.getElementById(this.modalDivPrefix + checkboxId)).checked = false;
                 }
                 this.previewComponent.removeChannel(checkboxId);
-                this.removeItem(this.sharedService.shoppingCart.cartSummary, pack.pack + ' - ' + pack.name)
+                this.removeItem(this.sharedService.shoppingCart.cartSummary, pack.pack + ' - ' + pack.name);
+                this.sharedService.shoppingCart.cartSummary.sort();
               }
             }
           }
@@ -211,6 +217,7 @@ export class MainpackComponent implements OnInit {
         (<HTMLInputElement>document.getElementById('pp.0')).checked = false;
         this.previewComponent.removeChannel('pp.0');
         this.removeItem(this.sharedService.shoppingCart.cartSummary, 'Prime Packages - Sport')
+        this.sharedService.shoppingCart.cartSummary.sort();
         this.reCalc('pp.0', 'remove');
       }
     }
@@ -236,6 +243,7 @@ export class MainpackComponent implements OnInit {
               (<HTMLInputElement>document.getElementById(this.modalDivPrefix + pack.id)).checked = false;
               this.previewComponent.removeChannel(pack.id);
               this.removeItem(this.sharedService.shoppingCart.cartSummary, pack.pack + ' - ' + pack.name)
+              this.sharedService.shoppingCart.cartSummary.sort();
               this.reCalc(pack.id, 'remove');
             }
           }
@@ -262,6 +270,7 @@ export class MainpackComponent implements OnInit {
               (<HTMLInputElement>document.getElementById(this.modalDivPrefix + checkboxId)).checked = true;
               this.previewComponent.addChannel(checkboxId);
               this.sharedService.shoppingCart.cartSummary.push(pack.pack + ' - ' + pack.name);
+              this.sharedService.shoppingCart.cartSummary.sort();
               this.reCalc(checkboxId, 'add')
             }
           }
@@ -273,6 +282,7 @@ export class MainpackComponent implements OnInit {
       (<HTMLInputElement>document.getElementById(this.modalDivPrefix + checkboxId)).checked = false;
       this.previewComponent.removeChannel(checkboxId);
       this.removeItem(this.sharedService.shoppingCart.cartSummary, this.getPackDetail(checkboxId).pack + ' - ' + this.getPackDetail(checkboxId).name)
+      this.sharedService.shoppingCart.cartSummary.sort();
       this.reCalc(checkboxId, 'remove');
     }
   }

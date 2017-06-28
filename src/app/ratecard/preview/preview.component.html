@@ -4,11 +4,29 @@
       <div class="card-header">
         Channels:&nbsp;&nbsp;
         <button id="hideAll" (click)="hideUnselected()" type="button" class="btn btn-secondary float-right">HIDE</button>
-        <button id="showAll" (click)="showAll()" type="button" class="btn btn-secondary float-right button-active">SHOW</button>        
+        <button id="showAll" (click)="showAll()" type="button" class="btn btn-secondary float-right button-active">SHOW</button>
       </div>
-      <div id="{{previewDivPrefix}}" class="card-block row">
+      <div id="{{previewDivPrefix}}" class="card-block">
 
-        <div id="{{previewDivPrefix}}as.0" class="card unselected">
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-4" *ngFor="let pack of packs">
+            <div id="{{previewDivPrefix}}{{pack.id}}" class="card unselected">
+              <div class="card-header">
+                {{pack.name}}&nbsp;&nbsp;
+                <i class="float-right fa fa-eye fa-lg" (click)="show(pack.id);"></i>
+                <!--<button (click)="show();">Hello</button>-->
+                <!--<span class="float-right">No. of Channels: {{pack.channels.length}}</span>-->
+              </div>
+              <div class="card-block" style="height:100px; overflow:hidden; padding-top:0.5em !important;">
+                <!--<div class="content"></div>-->
+                <div class="FadeAway"></div>
+                <span *ngFor="let channel of pack.channels">{{channel}}<br></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--<div id="{{previewDivPrefix}}as.0" class="card unselected">
           <div class="card-header">
             Family Pack&nbsp;&nbsp;
           </div>
@@ -96,9 +114,25 @@
             <span>711 Star World</span><br>
             <span>712 E! Entertainment</span><br>
           </div>
-        </div>
+        </div>-->
 
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div (click)="onContainerClicked($event)" class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}" [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>List of Channels</h5>
+      </div>
+
+      <div id="previewChannelDiv" class="modal-body" style="height: calc(100vh - 100px); max-height:500px; overflow:auto;">
+
+      </div>
+
     </div>
   </div>
 </div>
