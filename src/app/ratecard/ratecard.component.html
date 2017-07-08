@@ -1,40 +1,83 @@
-﻿<div class="animated fadeIn" style="padding-top:1em;">
-  <div class="row">
+﻿<div id="popupSuggestion" class="window-body" 
+[ngStyle]="{ 'display': sharedService.priceData.showSuggestion ? 'block' : 'none', 'opacity': sharedService.priceData.showSuggestion ? 1 : 0}">
+  <div class="window col-xs-10 col-md-8" style="padding-right:0px;">
+    <nav class="window-controls">
+      <button class="maximize" (click)="maximize()" style="position: fixed;bottom: 0px;">Suggestion</button>
+      <!--<div class="close"></div>-->
+      <button class="minimize" (click)="minimize()"></button>
+    </nav>
 
-    <div class="visible-sm" style="display:none;">
-      <div class="toogleDiv">
-        <button id="toogleBtn" class="btn btn-primary" (click)="toogleSlide();" style="margin-bottom:1em; background-color:#ec008c; margin-left:-1em;">
+    <div style="font-size:1.15em;font-weight:bold;color:white;text-align:center; background-color: #ec008c;height:30px; margin-left:15px; border-bottom: 1px solid rgba(0, 0, 0, .05); ">Suggestion Box</div>
+
+    <div class="row window-sidebar">
+      <div class="col-4 col-md-2" style="background-color: rgb(232, 234, 236); padding-right:0px; padding-left:0px;">
+        <button class="btn btn-primary content-block" type="button" (click)="superPackShow('sp1')">SUPER PACK 1</button>
+        <button class="btn btn-primary content-block" type="button" (click)="superPackShow('sp2')">SUPER PACK 2</button>
+        <button class="btn btn-primary content-block" type="button" (click)="superPackShow('sp3')">SUPER PACK 3</button>
+        <button class="btn btn-primary content-block" type="button" (click)="superPackShow('sp4')">SUPER PACK 4</button>
+      </div>
+      <div class="col-8 col-md-10" style="padding-right:0px; padding-left:0px; padding:5px;border: 1px solid rgb(150, 150, 150);">
+        <div style="overflow:auto;">
+          <div id="sp1" style="display:block;">
+            <button class="btn btn-primary" type="button" (click)="selectPack('sp1')">Select this Pack</button>
+            <br>
+            <img class="thumbnail" src="assets/img/sp1.JPG" />
+          </div>
+          <div id="sp2" style="display:none;">
+            <button class="btn btn-primary" type="button" (click)="selectPack('sp2')">Select this Pack</button>
+            <br>
+            <img class="thumbnail" src="assets/img/sp2.JPG" />
+          </div>
+          <div id="sp3" style="display:none;">
+            <button class="btn btn-primary" type="button" (click)="selectPack('sp3')">Select this Pack</button>
+            <br>
+            <img class="thumbnail" src="assets/img/sp3.JPG" />
+          </div>
+          <div id="sp4" style="display:none;">
+            <button class="btn btn-primary" type="button" (click)="selectPack('sp4')">Select this Pack</button>
+            <br>
+            <img class="thumbnail" src="assets/img/sp4.JPG" />
+          </div>
+        </div>
+        <footer>
+          Includes: Family | Sports | Movies | Choice of 3 Minis | HD + PVR Service | AOTG + OD Free
+        </footer>
+      </div>
+    </div>
+
+    <!--<aside class="window-sidebar">
+      <div class="content-block">SUPER PACK 1</div>
+      <div class="content-block">SUPER PACK 2</div>
+      <div class="content-block">SUPER PACK 3</div>
+      <div class="content-block">SUPER PACK 4</div>
+    </aside>-->
+
+    <!--<section class="window-content"></section>-->
+  </div>
+
+  <!--<div class="bg"></div>-->
+</div>
+
+<div class="visible-sm" style="display:none;height:2em;"></div>
+
+<div class="animated fadeIn" style="padding-top:1em; z-index:2">
+  <div class="row">
+    <div app-selection class="" style="display:none;"></div>
+  </div>
+</div>
+
+<div class="visible-sm" style="display:none;position:fixed;top:55px; z-index:2; left:0;">
+  <div class="toogleDiv">
+    <button id="toogleBtn" class="btn btn-primary" (click)="toogleSlide();" style="text-align:left;width:11em;margin-bottom:1em; background-color:#ec008c; ">
           <span id="toogleBtnHighlight" style="font-weight:bold;">View</span> 
           <span id="toogleBtnText">List of Channel</span>
         </button>
-        <!--<p class="box good">I move nicely!</p>-->
-      </div>
-
-    </div>
-
-    <div id="mainpackSelector" app-mainpack class="col-sm-12 col-md-6 box rtl"></div>
-    <div id="previewSelector" app-preview class="col-sm-12 col-md-6 box ltr"></div>
-    <div app-selection class="" style="display:none;"></div>
+    <!--<p class="box good">I move nicely!</p>-->
   </div>
-
-  <body id="popupSuggestion" class="" [ngStyle]="{ 'display': sharedService.priceData.showSuggestion ? 'block' : 'none', 'opacity': sharedService.priceData.showSuggestion ? 1 : 0}">
-    <div class="window col-xs-10 col-md-8" style="">
-      <nav class="window-controls">
-        <button class="maximize" (click)="maximize()">Suggestion</button>
-        <!--<div class="close"></div>-->
-        <button class="minimize" (click)="minimize()"></button>
-      </nav>
-
-      <aside class="window-sidebar">
-        <div class="content-block"></div>
-        <div class="content-block"></div>
-        <div class="content-block"></div>
-        <div class="content-block"></div>
-      </aside>
-
-      <section class="window-content"></section>
-    </div>
-
-    <!--<div class="bg"></div>-->
-  </body>
 </div>
+<div class="row" style="padding-bottom:55px;">
+  <app-mainpack id="mainpackSelector" class="col-sm-12 col-md-6 box rtl z-index:1"></app-mainpack>
+  <div id="previewSelector" app-preview class="col-sm-12 col-md-6 box ltr z-index:1"></div>
+</div>
+
+<button id="suggestionButton" class="button-maximize hideDiv" (click)="maximize()">Suggestion</button>

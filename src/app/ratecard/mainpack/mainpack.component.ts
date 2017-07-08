@@ -5,7 +5,7 @@ import { SelectionComponent } from '../selection/selection.component';
 import { Package } from './mainpack';
 
 @Component({
-  selector: '[app-mainpack]',
+  selector: 'app-mainpack',
   templateUrl: 'mainpack.component.html',
   styleUrls: ['../../../assets/css/checkbox.scss', '../../../assets/css/mainpack.scss']
 })
@@ -64,7 +64,7 @@ export class MainpackComponent implements OnInit {
   ]*/
 
   ngOnInit(): void {
-    this.reCalc('as.0', 'add');
+    this.calculateShoppingCart('as.0', 'add');
   }
 
   ngAfterViewInit() {
@@ -76,80 +76,86 @@ export class MainpackComponent implements OnInit {
     let checkbox = e.target;
     let checkboxId = checkbox.id;
     let packId = checkboxId.substring(2, 0);
-    let packContent = checkboxId.substring(3);
+    // let packContent = checkboxId.substring(3);
 
     if (checkbox.checked) {
-      for (let mainpack of this.mainpacks) {
-        if (mainpack.id == packId) {
-          for (let pack of mainpack.pack) {
-            if (pack.id == checkboxId) {
-
-              this.reCalc(pack.id, 'add');
-
-              if (pack.functionName !== '') {
-                this.checkBusinessRule(pack.functionName);
-                (<HTMLInputElement>document.getElementById(checkboxId)).checked = true;
-                if (this.checkifExist(this.modalDivPrefix + checkboxId)) {
-                  (<HTMLInputElement>document.getElementById(this.modalDivPrefix + checkboxId)).checked = true;
-                }
-                this.previewComponent.addChannel(checkboxId);
-                this.sharedService.shoppingCart.cartSummary.push(pack.pack + ' - ' + pack.name);
-                this.sharedService.shoppingCart.cartSummary.sort();
-              }
-              else {
-                (<HTMLInputElement>document.getElementById(checkboxId)).checked = true;
-                if (this.checkifExist(this.modalDivPrefix + checkboxId)) {
-                  (<HTMLInputElement>document.getElementById(this.modalDivPrefix + checkboxId)).checked = true;
-                }
-                this.previewComponent.addChannel(checkboxId);
-                this.sharedService.shoppingCart.cartSummary.push(pack.pack + ' - ' + pack.name);
-                this.sharedService.shoppingCart.cartSummary.sort();
-              }
-            }
-          }
-        }
-      }
+      this.checkPack(packId, checkboxId)
     }
     else {
-      for (let mainpack of this.mainpacks) {
-        if (mainpack.id == packId) {
-          for (let pack of mainpack.pack) {
-            if (pack.id == checkboxId) {
+      this.uncheckPack(packId, checkboxId)
+    }
+  }
 
-              this.reCalc(pack.id, 'remove');
+  private checkPack(packId, checkboxId) {
+    for (let mainpack of this.mainpacks) {
+      if (mainpack.id == packId) {
+        for (let pack of mainpack.pack) {
+          if (pack.id == checkboxId) {
 
-              if (pack.functionName !== '') {
-                this.checkBusinessRule(pack.functionName);
-                (<HTMLInputElement>document.getElementById(checkboxId)).checked = false;
-                if (this.checkifExist(this.modalDivPrefix + checkboxId)) {
-                  (<HTMLInputElement>document.getElementById(this.modalDivPrefix + checkboxId)).checked = false;
-                }
-                this.previewComponent.removeChannel(checkboxId);
-                this.removeItem(this.sharedService.shoppingCart.cartSummary, pack.pack + ' - ' + pack.name);
-                this.sharedService.shoppingCart.cartSummary.sort();
+            this.calculateShoppingCart(pack.id, 'add');
+
+            if (pack.functionName !== '') {
+              this.checkBusinessRule(pack.functionName);
+              (<HTMLInputElement>document.getElementById(checkboxId)).checked = true;
+              if (this.checkifExist(this.modalDivPrefix + checkboxId)) {
+                (<HTMLInputElement>document.getElementById(this.modalDivPrefix + checkboxId)).checked = true;
               }
-              else {
-                (<HTMLInputElement>document.getElementById(checkboxId)).checked = false;
-                if (this.checkifExist(this.modalDivPrefix + checkboxId)) {
-                  (<HTMLInputElement>document.getElementById(this.modalDivPrefix + checkboxId)).checked = false;
-                }
-                this.previewComponent.removeChannel(checkboxId);
-                this.removeItem(this.sharedService.shoppingCart.cartSummary, pack.pack + ' - ' + pack.name);
-                this.sharedService.shoppingCart.cartSummary.sort();
+              this.previewComponent.addChannel(checkboxId);
+              this.sharedService.shoppingCart.cartSummary.push(pack.pack + ' - ' + pack.name);
+              this.sharedService.shoppingCart.cartSummary.sort();
+            }
+            else {
+              (<HTMLInputElement>document.getElementById(checkboxId)).checked = true;
+              if (this.checkifExist(this.modalDivPrefix + checkboxId)) {
+                (<HTMLInputElement>document.getElementById(this.modalDivPrefix + checkboxId)).checked = true;
               }
+              this.previewComponent.addChannel(checkboxId);
+              this.sharedService.shoppingCart.cartSummary.push(pack.pack + ' - ' + pack.name);
+              this.sharedService.shoppingCart.cartSummary.sort();
             }
           }
         }
       }
     }
+  }
 
+  private uncheckPack(packId, checkboxId) {
+    for (let mainpack of this.mainpacks) {
+      if (mainpack.id == packId) {
+        for (let pack of mainpack.pack) {
+          if (pack.id == checkboxId) {
+
+            this.calculateShoppingCart(pack.id, 'remove');
+
+            if (pack.functionName !== '') {
+              this.checkBusinessRule(pack.functionName);
+              (<HTMLInputElement>document.getElementById(checkboxId)).checked = false;
+              if (this.checkifExist(this.modalDivPrefix + checkboxId)) {
+                (<HTMLInputElement>document.getElementById(this.modalDivPrefix + checkboxId)).checked = false;
+              }
+              this.previewComponent.removeChannel(checkboxId);
+              this.removeItem(this.sharedService.shoppingCart.cartSummary, pack.pack + ' - ' + pack.name);
+              this.sharedService.shoppingCart.cartSummary.sort();
+            }
+            else {
+              (<HTMLInputElement>document.getElementById(checkboxId)).checked = false;
+              if (this.checkifExist(this.modalDivPrefix + checkboxId)) {
+                (<HTMLInputElement>document.getElementById(this.modalDivPrefix + checkboxId)).checked = false;
+              }
+              this.previewComponent.removeChannel(checkboxId);
+              this.removeItem(this.sharedService.shoppingCart.cartSummary, pack.pack + ' - ' + pack.name);
+              this.sharedService.shoppingCart.cartSummary.sort();
+            }
+          }
+        }
+      }
+    }
   }
 
   private checkBusinessRule(functionName: string) {
     if (functionName === 'mini_pack') {
       this.miniPack();
     }
-
   }
 
   private miniPack() {
@@ -218,7 +224,7 @@ export class MainpackComponent implements OnInit {
         this.previewComponent.removeChannel('pp.0');
         this.removeItem(this.sharedService.shoppingCart.cartSummary, 'Prime Packages - Sport')
         this.sharedService.shoppingCart.cartSummary.sort();
-        this.reCalc('pp.0', 'remove');
+        this.calculateShoppingCart('pp.0', 'remove');
       }
     }
     else if (!(<HTMLInputElement>document.getElementById('pp.0')).checked) {
@@ -244,7 +250,7 @@ export class MainpackComponent implements OnInit {
               this.previewComponent.removeChannel(pack.id);
               this.removeItem(this.sharedService.shoppingCart.cartSummary, pack.pack + ' - ' + pack.name)
               this.sharedService.shoppingCart.cartSummary.sort();
-              this.reCalc(pack.id, 'remove');
+              this.calculateShoppingCart(pack.id, 'remove');
             }
           }
         }
@@ -259,7 +265,7 @@ export class MainpackComponent implements OnInit {
     checkboxId = checkboxId.substring(this.modalDivPrefix.length);
 
     let packId = checkboxId.substring(2, 0);
-    let packContent = checkboxId.substring(3);
+    // let packContent = checkboxId.substring(3);
 
     if (checkbox.checked) {
       for (let mainpack of this.mainpacks) {
@@ -271,7 +277,7 @@ export class MainpackComponent implements OnInit {
               this.previewComponent.addChannel(checkboxId);
               this.sharedService.shoppingCart.cartSummary.push(pack.pack + ' - ' + pack.name);
               this.sharedService.shoppingCart.cartSummary.sort();
-              this.reCalc(checkboxId, 'add')
+              this.calculateShoppingCart(checkboxId, 'add')
             }
           }
         }
@@ -283,13 +289,13 @@ export class MainpackComponent implements OnInit {
       this.previewComponent.removeChannel(checkboxId);
       this.removeItem(this.sharedService.shoppingCart.cartSummary, this.getPackDetail(checkboxId).pack + ' - ' + this.getPackDetail(checkboxId).name)
       this.sharedService.shoppingCart.cartSummary.sort();
-      this.reCalc(checkboxId, 'remove');
+      this.calculateShoppingCart(checkboxId, 'remove');
     }
   }
 
   private getPackDetail(checkboxId): Package {
     let packId = checkboxId.substring(2, 0);
-    let packContent = checkboxId.substring(3);
+    // let packContent = checkboxId.substring(3);
 
     for (let mainpack of this.mainpacks) {
       if (mainpack.id == packId) {
@@ -312,16 +318,11 @@ export class MainpackComponent implements OnInit {
     }
   }
 
-  private removeItem(array, item) {
-    for (var i in array) {
-      if (array[i] == item) {
-        array.splice(i, 1);
-        break;
-      }
-    }
+  public selectPack() {
+
   }
 
-  private reCalc(checkboxId: string, operation: string) {
+  private calculateShoppingCart(checkboxId: string, operation: string) {
     if (operation == 'add') {
       this.allPackIdCalculate.push(checkboxId);
     }
@@ -329,7 +330,7 @@ export class MainpackComponent implements OnInit {
       this.removeItem(this.allPackIdCalculate, checkboxId)
     }
 
-    let calculationResult = this.calcBusinessRule();
+    let calculationResult = this.calculateBusinessRule();
     let price = calculationResult[0];
     let priceTrail = calculationResult[1];
 
@@ -339,7 +340,7 @@ export class MainpackComponent implements OnInit {
     this.sharedService.insertPriceData(price, priceTrail);
   }
 
-  private calcBusinessRule() {
+  private calculateBusinessRule() {
     let result = [];
     let price: number = 0;
     let priceTrail: string = '';
@@ -443,6 +444,15 @@ export class MainpackComponent implements OnInit {
       }
     }
     return false;
+  }
+
+  private removeItem(array, item) {
+    for (var i in array) {
+      if (array[i] == item) {
+        array.splice(i, 1);
+        break;
+      }
+    }
   }
 
 }

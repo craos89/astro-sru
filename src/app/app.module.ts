@@ -8,18 +8,18 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NAV_DROPDOWN_DIRECTIVES } from './shared/nav-dropdown.directive';
 
-import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { SIDEBAR_TOGGLE_DIRECTIVES } from './shared/sidebar.directive';
-import { AsideToggleDirective } from './shared/aside.directive';
-import { BreadcrumbsComponent } from './shared/breadcrumb.component';
+// import { ChartsModule } from 'ng2-charts/ng2-charts';
+// import { SIDEBAR_TOGGLE_DIRECTIVES } from './shared/sidebar.directive';
+// import { AsideToggleDirective } from './shared/aside.directive';
+// import { BreadcrumbsComponent } from './shared/breadcrumb.component';
 
 // Routing Module
 import { AppRoutingModule } from './app.routing';
 
 // Layouts
-import { FullLayoutComponent } from './layouts/full-layout.component';
+// import { FullLayoutComponent } from './layouts/full-layout.component';
 import { CustomLayoutComponent } from './layouts/custom-layout.component';
-import { SimpleLayoutComponent } from './layouts/simple-layout.component';
+// import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 
 import { SharedService } from './ratecard/shared.service';
 
@@ -29,18 +29,18 @@ import { SharedService } from './ratecard/shared.service';
     AppRoutingModule,
     HttpModule,
     BsDropdownModule.forRoot(),
-    TabsModule.forRoot(),
-    ChartsModule
+    // TabsModule.forRoot(),
+    // ChartsModule
   ],
   declarations: [
     AppComponent,
-    FullLayoutComponent,
+    // FullLayoutComponent,
     CustomLayoutComponent,
-    SimpleLayoutComponent,
-    NAV_DROPDOWN_DIRECTIVES,
-    BreadcrumbsComponent,
-    SIDEBAR_TOGGLE_DIRECTIVES,
-    AsideToggleDirective,
+    // SimpleLayoutComponent,
+    // NAV_DROPDOWN_DIRECTIVES,
+    // BreadcrumbsComponent,
+    // SIDEBAR_TOGGLE_DIRECTIVES,
+    // AsideToggleDirective,
   ],
   providers: [
     SharedService, 

@@ -4,8 +4,8 @@
     <li class="nav-item px-3">
       <a class="nav-link" href="#">Dashboard</a>
     </li>
-  </ul>-->  
-  <ul class="nav navbar-nav ml-auto shopping-cart">    
+  </ul>-->
+  <ul class="nav navbar-nav ml-auto shopping-cart">
     <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
       <a href class="nav-link" dropdownToggle (click)="false" style="height:50px;">
         <span style="font-size: 1.00rem; color: #ec008c">{{sharedService.shoppingCart.totalPriceAfterRounding}} / month</span>
@@ -47,7 +47,4 @@
   </main>
 </div>
 
-<footer class="app-footer">
-  <!--<a href="http://coreui.io">CoreUI</a> &copy; 2017 creativeLabs.
-  <span class="float-right">Powered by <a href="http://coreui.io">CoreUI</a></span>-->
-</footer>
+<footer class="app-footer mobile" style="background-color:white;"></footer>

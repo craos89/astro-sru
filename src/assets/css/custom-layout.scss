@@ -9,3 +9,12 @@
           margin-right:1em; font-size: 1.00rem; color: #ec008c
       }
   }
+
+@media (max-width:767px){
+    .mobile{
+        bottom:0px;
+        width:100%;
+        position: fixed !important;
+    }     
+}
+  

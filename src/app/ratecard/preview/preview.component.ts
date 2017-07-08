@@ -4,7 +4,7 @@ import { SharedService, SharedData } from '../shared.service';
 @Component({
   selector: '[app-preview]',
   templateUrl: 'preview.component.html',
-  styleUrls: ['../../../assets/css/checkbox.scss', '../../../assets/css/mainpack.scss']
+  styleUrls: ['../../../assets/css/checkbox.scss', '../../../assets/css/mainpack.scss', '../../../assets/css/preview.scss']
 })
 
 export class PreviewComponent implements OnInit {
